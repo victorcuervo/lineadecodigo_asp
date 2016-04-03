@@ -1,0 +1,21 @@
+<SCRIPT LANGUAGE="VBScript" RUNAT="Server">
+
+Sub Session_OnStart
+
+visitas = Request.Cookies("visitas")
+
+   if visitas = "" then
+     'El usuario no tiene cookie. Es la primera vez que nos visita
+     visitas = "1"
+   else
+     'El usuario si que tiene una cookie
+     numVisitas = CLng(visitas) +1
+     visitas = CStr(numVisitas)
+   end if
+   
+   Response.Cookies("visitas") = visitas
+   Response.Cookies("visitas").expires = "12/12/2003"
+
+end Sub
+
+</SCRIPT>

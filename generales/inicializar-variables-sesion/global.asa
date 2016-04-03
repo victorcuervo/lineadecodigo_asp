@@ -1,0 +1,21 @@
+<SCRIPT LANGUAGE="VBScript" RUNAT="Server">
+
+Sub Session_OnStart
+
+ 'Tiempo de la sesión 20 minutos
+ Session.Timeout = 20
+
+ 'LCID para que fechas y monedas se vean en español
+ Session.LCID = 1034
+
+End Sub
+
+Sub Session_OnEnd
+
+   application.Lock
+   application("usuariosActivos")=application("usuariosActivos")-1    
+   application.UnLock
+   
+End Sub
+
+</SCRIPT> 
